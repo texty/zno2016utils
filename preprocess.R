@@ -10,9 +10,9 @@ last_word <- function(TerName) {
   return(res)
 } 
 
-df_last <- df0 %>% 
-  mutate(ter_last=last_word(TerName)) %>% 
-  mutate(area_last=last_word(AreaName))
+#df_last <- df %>% 
+#  mutate(ter_last=last_word(TerName)) %>% 
+#  mutate(area_last=last_word(AreaName))
 
 ########################################
 
@@ -35,7 +35,11 @@ region_name <- function(AreaName) {
 }
 
 #todo out to csv
-df_out <- df0 %>% 
+df0 <- df %>% 
   mutate(city=city_name(TerName, AreaName)) %>% 
   mutate(region=region_name(AreaName)) %>% 
-  mutate(oblast=Regname)
+  rename(oblast=Regname) %>% 
+  select(-AreaName, -TerName)
+
+df0 %>% write.csv('zno_2016_final.csv', row.names=FALSE) 
+  
