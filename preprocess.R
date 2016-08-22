@@ -37,7 +37,8 @@ region_name <- function(AreaName) {
 #todo out to csv
 df0 <- df %>% 
   mutate(city=city_name(TerName, AreaName)) %>% 
-  mutate(region=region_name(AreaName)) %>% 
+  mutate(region=region_name(AreaName)) %>%
+  mutate(city_region=ifelse(is_city_region(TerName), TerName, NA)) %>% 
   rename(oblast=Regname) %>% 
   select(-AreaName, -TerName)
 
