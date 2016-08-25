@@ -14,8 +14,6 @@ oblast_center <- oblast_center %>% mutate(oblast_or_city=city_name)
 df <- read.csv('../zno_2016_final.csv')
 
 
-
-
 df1 <- df %>% 
   left_join(oblast_center, by='city_name') %>%
   mutate(oblast_or_city=as.character(oblast_or_city)) %>% 
@@ -64,4 +62,4 @@ uhe %>% write.csv('uhe.csv', row.names=FALSE)
 ume %>% write.csv('ume.csv', row.names=FALSE)
 ump %>% write.csv('ump.csv', row.names=FALSE)
 
-df1 %>% write.csv('zno_2016_oblast_or_city.csv', row.names=FALSE)   
+#df1 %>% write.csv('zno_2016_oblast_or_city.csv', row.names=FALSE)   
